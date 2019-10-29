@@ -1,4 +1,38 @@
 # springcloud-eureka-feign-mybatis-seata
+
+
+
+在seata-server端的file.conf配置文件中，有个default.grouplist配置，是干嘛的呢？
+1.作用方式
+这个配置，只有当registry.type=file，注册中心是file方式时，才会起作用。
+
+2.配置
+这个值可以配置多个，配置多个就是集群方式。由于并未提供本地文件的同步，所以，在store.mode=file模式下，这种集群方式的配置会报错，如果配置为集群，store.mode=db，这样可以通过db来共享TC集群间的数据。
+
+3.作用
+当 registry.type=file时，这个default.grouplist才会用到，但是file方式，并不能提供一个注册中心的完整功能，比如健康检查机制，实例列表的更新剔出等，注册中心还是要使用专业的比较好，比如现在已经支持的nacos 、eureka、redis、zk、consul、etcd3、sofa。
+
+registry.type=file 或 config.type=file 设计的初衷，是让用户在不依赖第三方注册中心或配置中心的前提下，可以通过file这种简单的直连快速验证 Seata 服务，快速上手。
+ 
+ 
+ 
+ 
+ 
+ 
+ 1、file.cnf 和regist.cnf
+
+regist.cnf 主要用于配置 和 服务注册发现的配置 。
+
+file 里面 是针对基于fle配置 相关service 服务指定的配置例如 setata server 地址 你的服务名称。等
+
+2、服务的注册方式和seata-server的注册不要混淆
+ 
+ 
+ 
+
+
+ 
+
 ### 概览
 ##### 1.整合seata的demo,此demo都配置好了，拉下来按照步骤，直接可以跑起来观察效果。
 
@@ -40,7 +74,7 @@ demo分为四个项目，单独启动。
 order服务关键代码如下：
 ```java
     @Override
-    @GlobalTransactional(name = "fsp-create-order",rollbackFor = Exception.class) //此注解开启全局事务
+    @GlobalTransactional(name = "my_test_tx_group",rollbackFor = Exception.class) //此注解开启全局事务
     public void create(Order order) {
         //本地方法 创建订单
         orderDao.create(order);
@@ -112,7 +146,7 @@ store {
 ```java
 service {
   #vgroup->rgroup
-  vgroup_mapping.fsp_tx_group = "default"  修改这里，fsp_tx_group这个事务组名称是我自定义的，一定要与client端的这个配置一致！否则会报错！
+  vgroup_mapping.my_test_tx_group = "default"  修改这里，my_test_tx_group这个事务组名称是我自定义的，一定要与client端的这个配置一致！否则会报错！
   #only support single node
   default.grouplist = "127.0.0.1:8091"   此配置作用参考:https://blog.csdn.net/weixin_39800144/article/details/100726116
   #degrade current not support
@@ -196,14 +230,14 @@ spring:
     cloud:
         alibaba:
             seata:
-                tx-service-group: fsp_tx_group  这个fsp_tx_group自定义命名很重要，server，client都要保持一致
+                tx-service-group: my_test_tx_group  这个my_test_tx_group自定义命名很重要，server，client都要保持一致
 ```
 ##### 2.file.conf
 自己新建的项目是没有这个配置文件的，copy过来，修改下面配置：
 ```java
 service {
   #vgroup->rgroup
-  vgroup_mapping.fsp_tx_group = "default"   这个fsp_tx_group自定义命名很重要，server，client都要保持一致
+  vgroup_mapping.my_test_tx_group = "default"   这个my_test_tx_group自定义命名很重要，server，client都要保持一致
   #only support single node
   default.grouplist = "127.0.0.1:8091"
   #degrade current not support

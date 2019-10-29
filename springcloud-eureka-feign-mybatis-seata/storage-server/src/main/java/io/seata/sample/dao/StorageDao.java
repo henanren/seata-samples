@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author IT云清
+ * @author chinaren   2019 10 29
  */
 @Repository
 public interface StorageDao {

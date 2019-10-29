@@ -3,7 +3,7 @@ package io.seata.sample.service;
 import io.seata.sample.entity.Order;
 
 /**
- * @author IT云清
+ * @author chinaren   2019 10 29
  */
 public interface OrderService {
 

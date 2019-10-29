@@ -6,12 +6,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.8.RELEASE</version>
-		<relativePath/>
+		<relativePath />
 	</parent>
 	<groupId>io.seata.sample</groupId>
 	<artifactId>springcloud-eureka-feign-mybatis-seata</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	<packaging>pom</packaging>
 	<name>springcloud-eureka-feign-mybatis-seata</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -28,6 +28,7 @@
 		<druid-spring-boot-starter.version>1.1.10</druid-spring-boot-starter.version>
 		<lombok.version>1.18.8</lombok.version>
 		<seata.version>0.9.0</seata.version>
+		<maven-jar-plugin.version>3.0.0</maven-jar-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -41,31 +42,31 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--mybatis-->
+		<!--mybatis -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>${mybatis-spring-boot-starter.version}</version>
 		</dependency>
-		<!--mysql-->
+		<!--mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector-java.version}</version>
 		</dependency>
-		<!--druid-->
+		<!--druid -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>${druid-spring-boot-starter.version}</version>
 		</dependency>
-		<!--lombok-->
+		<!--lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
 		</dependency>
-		<!--seata-->
+		<!--seata -->
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-alibaba-seata</artifactId>

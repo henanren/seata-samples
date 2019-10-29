@@ -30,7 +30,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Maven properties -->
-        <maven.test.skip>false</maven.test.skip>
+        <maven.test.skip>true</maven.test.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <!-- Compiler settings properties -->
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -59,6 +59,9 @@
         <guava.version>27.0.1-jre</guava.version>
         <jackson.version>2.9.9.1</jackson.version>
         <druid.version>1.1.12</druid.version>
+        
+         <commons-codec.version>1.11</commons-codec.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
     </properties>
     <modules>
         <module>dubbo</module>
@@ -100,6 +103,19 @@
             <artifactId>spring-aop</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        
+        	<!-- 工具包 -->
+	 <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+		 <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+		
     </dependencies>
 
     <dependencyManagement>
