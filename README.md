@@ -1,6 +1,6 @@
 <img src="https://github.com/seata/seata-samples/blob/master/doc/img/seata.png"  height="100" width="426">
 
-# Seata Samples
+# Seata Samples   seata-samples，官网demo，可用，自己测试。
 
 Samples for Seata. This project contains several sub-projects, each of which is an example of integration with other projects.
                                 
